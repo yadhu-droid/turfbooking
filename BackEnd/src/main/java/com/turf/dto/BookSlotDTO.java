@@ -5,6 +5,7 @@ public class BookSlotDTO {
 	private String date;
     private String time;
     private int userId;
+    private int paymentId;
 
     // Getters and setters
     public String getDate() {
@@ -30,4 +31,12 @@ public class BookSlotDTO {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+	public int getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(int paymentId) {
+		this.paymentId = paymentId;
+	}
 }

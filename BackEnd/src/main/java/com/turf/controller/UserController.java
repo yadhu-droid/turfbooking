@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.turf.dto.BookSlotDTO;
 import com.turf.dto.LoginDTO;
+import com.turf.dto.PaymentDTO;
 import com.turf.dto.UserDTO;
 import com.turf.entity.BookedSlots;
+import com.turf.entity.Payment;
 import com.turf.entity.User;
 import com.turf.service.BookingService;
 import com.turf.service.UserService;
@@ -53,6 +55,11 @@ public class UserController {
 	@GetMapping("/getbookingdetails/{userId}")
 	public List<BookedSlots> getBookingDetails(@PathVariable long userId){
 		return bookingService.getBookingDetails(userId);
+	}
+	
+	@PostMapping("/payment") 
+	public Payment payment(@RequestBody PaymentDTO paymentDto) {
+		return bookingService.addPayment(paymentDto);
 	}
 	
 }

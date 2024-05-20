@@ -21,4 +21,8 @@ export class BookingService {
   getBookingDetails(userId:number): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:8080/users/getbookingdetails/${userId}`);
   }
+
+  payment(paymentData:any):Observable<any> {
+    return this.http.post(`http://localhost:8080/users/payment`, paymentData);
+  }
 }

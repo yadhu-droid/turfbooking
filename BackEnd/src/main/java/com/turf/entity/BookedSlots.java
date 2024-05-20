@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +25,28 @@ public class BookedSlots {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 	
+	@OneToOne
+	@JoinColumn(name="payment_id")
+	private Payment payment;
+	
+	
+	
+	public BookedSlots(long bookingId, User user, Payment payment, LocalDate slotDate, LocalTime slotTime,
+			LocalDateTime currentDateAndTime) {
+		super();
+		this.bookingId = bookingId;
+		this.user = user;
+		this.payment = payment;
+		this.slotDate = slotDate;
+		this.slotTime = slotTime;
+		this.currentDateAndTime = currentDateAndTime;
+	}
+	public Payment getPayment() {
+		return payment;
+	}
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
 	private LocalDate slotDate;
 	private LocalTime slotTime;
 	private LocalDateTime currentDateAndTime;
@@ -57,15 +80,6 @@ public class BookedSlots {
 	}
 	public void setUser(User user) {
 		this.user = user;
-	}
-	public BookedSlots(long bookingId, User user, LocalDate slotDate, LocalTime slotTime,
-			LocalDateTime currentDateAndTime) {
-		super();
-		this.bookingId = bookingId;
-		this.user = user;
-		this.slotDate = slotDate;
-		this.slotTime = slotTime;
-		this.currentDateAndTime = currentDateAndTime;
 	}
 	public BookedSlots() {
 		super();

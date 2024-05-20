@@ -3,12 +3,12 @@
     <a class="mousehover default">View Bookings</a>
     <a routerLink="/" class="redhover">Logout</a>
 </nav>
-  <div class="product-container">
-        <div class="product-card" *ngFor="let slot of bookingDetails">
+  <div class="product-container" *ngFor="let slots of chunkedBookingDetails">
+        <div class="product-card" *ngFor="let slot of slots">
          Customer Name : {{receivedData.userFirstName}}&nbsp;{{receivedData.userLastName}}<br><br>
          Booking ID : {{slot.bookingId}}<br><br>
          Slot Date : {{slot.slotDate}}<br><br>
          Slot Time : {{slot.slotTime}}<br><br>
-         Booked Date And Time : {{slot.currentDateAndTime | date}}       
+         Booked Date : {{slot.currentDateAndTime | date}}       
         </div>
    </div>
